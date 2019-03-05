@@ -54,7 +54,11 @@ with gentle.resampled(args.audiofile) as wavfile:
     aligner = gentle.ForcedAligner(resources, transcript, nthreads=args.nthreads, disfluency=args.disfluency, conservative=args.conservative, disfluencies=disfluencies)
     result = aligner.transcribe(wavfile, progress_cb=on_progress, logging=logging)
 
-fh = open(args.output, 'w') if args.output else sys.stdout
+fh = open(args.output+'.json', 'w') if args.output else sys.stdout
 fh.write(result.to_json(indent=2))
+
+csv_w = open(args.output+'.csv', 'w') if args.output else sys.stdout
+csv_w.write(result.to_csv(indent=2))
+
 if args.output:
     logging.info("output written to %s" % (args.output))
