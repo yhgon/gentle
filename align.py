@@ -43,8 +43,8 @@ def on_progress(p):
         logging.debug("%s: %s" % (k, v))
 
 
-with open(args.txtfile) as fh:
-    transcript = fh.read()
+with open(args.txtfile, "utf-8") as fh:
+    transcript = fh.read() 
 
 resources = gentle.Resources()
 logging.info("converting audio to 8K sampled wav")
