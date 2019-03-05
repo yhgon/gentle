@@ -43,7 +43,7 @@ def on_progress(p):
     for k,v in p.items():
         logging.debug("%s: %s" % (k, v))
 
-with open(args.txtfile, r, "utf-8") as fh:
+with open(args.txtfile) as fh:
     transcript = fh.read() 
 
 resources = gentle.Resources()
